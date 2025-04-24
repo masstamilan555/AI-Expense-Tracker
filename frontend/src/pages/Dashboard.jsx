@@ -21,9 +21,10 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const [catRes, statRes] = await Promise.all([
-          axios.get("/api/expenses/category-wise-expenses", { withCredentials: true }),
-          axios.get("/api/expenses/monthly-expenses", { withCredentials: true })
+          axios.get("http://localhost:4000/api/expenses/category-wise-expenses", { withCredentials: true }),
+          axios.get("http://localhost:4000/api/expenses/monthly-expenses", { withCredentials: true })
         ]);
+        
         setCatexp(catRes.data);
         setStats(statRes.data);
       } catch (err) {
@@ -32,6 +33,7 @@ const Dashboard = () => {
     };
     fetchData();
   }, []);
+  
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -56,7 +58,7 @@ const Dashboard = () => {
       </button>
 
       {/* Main content */}
-      <div className="flex-1 flex flex-col md:ml-64">
+      <div className="flex-1 flex flex-col ">
         <div className="flex-1 overflow-auto px-4 sm:px-6 lg:px-8 py-6">
           <UserProvider stats={stats} catexp={catexp}>
             <Routes>

@@ -15,6 +15,7 @@ const cardBase = `
 
 export default function Cards() {
   const { stats } = useUserContext();
+  
   const navigate = useNavigate();
 
   return (

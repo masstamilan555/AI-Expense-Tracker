@@ -33,9 +33,7 @@ const Settings = () => {
         { withCredentials: true }
       );
       toast.success("Budget updated!", { id: toastId });
-      // re-fetch user data
       await authCheck();
-      // optional: scroll to top
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
       console.error(err);
