@@ -66,7 +66,7 @@ const Login = () => {
         </div>
 
         <button
-          onClick={() => window.location.href = "http://localhost:4000/api/auth/google"}
+          onClick={() => window.location.href = "https://expense-tracker-api-rmjc.onrender.com/api/auth/google"}
           className="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition flex items-center justify-center gap-2"
         >
           <FaGoogle /> Continue with Google

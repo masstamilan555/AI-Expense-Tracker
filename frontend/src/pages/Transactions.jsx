@@ -8,7 +8,7 @@ const Transactions = () => {
   const [loading, setLoading] = useState(true); 
   const getExpenses = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/expenses/all-expenses", {
+      const res = await axios.get("https://expense-tracker-api-rmjc.onrender.com/api/expenses/all-expenses", {
         withCredentials: true,
       });
       setTransactions(res.data.data);
@@ -25,7 +25,7 @@ const Transactions = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/expenses/${id}`, {
+      await axios.delete(`https://expense-tracker-api-rmjc.onrender.com/api/expenses/${id}`, {
         withCredentials: true,
       });
       setTransactions((prev) => prev.filter((item) => item._id !== id));

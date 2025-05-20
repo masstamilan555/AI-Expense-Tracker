@@ -14,7 +14,7 @@ const Advice = () => {
     setLoading(true);
     try {
       toast("Please wait,While we analze your status")
-      const res = await axios.post("http://localhost:4000/api/ai/advice", {
+      const res = await axios.post("https://expense-tracker-api-rmjc.onrender.com/api/ai/advice", {
         stats: stats.data,
         catexp: catexp.data,
       }, { withCredentials: true });

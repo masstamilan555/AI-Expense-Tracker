@@ -21,8 +21,8 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const [catRes, statRes] = await Promise.all([
-          axios.get("http://localhost:4000/api/expenses/category-wise-expenses", { withCredentials: true }),
-          axios.get("http://localhost:4000/api/expenses/monthly-expenses", { withCredentials: true })
+          axios.get("https://expense-tracker-api-rmjc.onrender.com/api/expenses/category-wise-expenses", { withCredentials: true }),
+          axios.get("https://expense-tracker-api-rmjc.onrender.com/api/expenses/monthly-expenses", { withCredentials: true })
         ]);
         
         setCatexp(catRes.data);

@@ -14,7 +14,7 @@ const RecordExpense = () => {
         setAmount(0)
         setDescription("")
         
-        await axios.post("http://localhost:4000/api/expenses/create", { amount, category, description },
+        await axios.post("https://expense-tracker-api-rmjc.onrender.com/api/expenses/create", { amount, category, description },
           { withCredentials: true })
           toast.success("transaction recorded successfully!!!")
       } catch (error) {

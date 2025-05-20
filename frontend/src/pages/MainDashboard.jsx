@@ -45,7 +45,7 @@ export default function MainDashboard() {
   const getAdvice = async () => {
     toast("Fetching your AI advice…");
     try {
-      const res = await fetch("/api/ai/advice", {
+      const res = await fetch("https://expense-tracker-api-rmjc.onrender.com/api/ai/advice", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

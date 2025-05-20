@@ -28,7 +28,7 @@ const Settings = () => {
     const toastId = toast.loading("Saving changes...");
     try {
       await axios.put(
-        "http://localhost:4000/api/user/budget",
+        "https://expense-tracker-api-rmjc.onrender.com/api/user/budget",
         { monthlyIncome, budgetLimit },
         { withCredentials: true }
       );

@@ -12,7 +12,7 @@ const useAuthStore = create((set) => ({
     try {
       set({ loading: true, error: null });
       const response = await axios.post(
-        "http://localhost:4000/api/auth/signup",
+        "https://expense-tracker-api-rmjc.onrender.com/api/auth/signup",
         { name, email, password },
         { withCredentials: true }
       );
@@ -35,7 +35,7 @@ const useAuthStore = create((set) => ({
     try {
       set({ loading: true, error: null });
       const response = await axios.post(
-        "http://localhost:4000/api/auth/login",
+        "https://expense-tracker-api-rmjc.onrender.com/api/auth/login",
         { email, password },
         { withCredentials: true }
       );
@@ -57,7 +57,7 @@ const useAuthStore = create((set) => ({
     set({ loading: true });
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/auth/profile",
+        "https://expense-tracker-api-rmjc.onrender.com/api/auth/profile",
         { withCredentials: true }
       );
       set({
@@ -83,7 +83,7 @@ const useAuthStore = create((set) => ({
   logout: async () => {
     try {
       await axios.post(
-        "http://localhost:4000/api/auth/logout",
+        "https://expense-tracker-api-rmjc.onrender.com/api/auth/logout",
         {},
         { withCredentials: true }
       );
