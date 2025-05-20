@@ -34,7 +34,7 @@ router.get(
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
-    res.redirect("http://localhost:5173/dashboard");
+    res.redirect("https://ai-expense-tracker-gwxl.onrender.com/dashboard");
   }
 );
 
