@@ -20,7 +20,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-    origin: "http://localhost:5173", 
+    origin: "https://golden-cocada-356c82.netlify.app", 
     credentials: true
   }));
   
