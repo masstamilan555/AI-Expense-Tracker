@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { API_URL } from "../constants/consts";
 
 const Settings = () => {
   const { user, authCheck, logout } = useAuthStore();
@@ -28,7 +29,7 @@ const Settings = () => {
     const toastId = toast.loading("Saving changes...");
     try {
       await axios.put(
-        "https://expense-tracker-api-rmjc.onrender.com/api/user/budget",
+        `${API_URL}/user/budget`,
         { monthlyIncome, budgetLimit },
         { withCredentials: true }
       );

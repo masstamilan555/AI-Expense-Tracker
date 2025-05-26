@@ -7,9 +7,9 @@ const RecordExpense = () => {
   const [amount, setAmount] = useState(0)
   const [description, setDescription] = useState("")
   const [category, setCategory] = useState("")
-
   const handleSubmit = (e) => {
     e.preventDefault()
+    
     const createTransaction = async () => {
       try {
         setAmount(0)
