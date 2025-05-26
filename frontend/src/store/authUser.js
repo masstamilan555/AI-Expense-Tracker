@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
+import { API_URL } from "../constants/consts";
 
 const useAuthStore = create((set) => ({
   user: null,
@@ -12,7 +13,7 @@ const useAuthStore = create((set) => ({
     try {
       set({ loading: true, error: null });
       const response = await axios.post(
-        "https://expense-tracker-api-rmjc.onrender.com/api/auth/signup",
+        `${API_URL}/api/auth/signup`,
         { name, email, password },
         { withCredentials: true }
       );
@@ -35,7 +36,7 @@ const useAuthStore = create((set) => ({
     try {
       set({ loading: true, error: null });
       const response = await axios.post(
-        "https://expense-tracker-api-rmjc.onrender.com/api/auth/login",
+        `${API_URL}/auth/login`,
         { email, password },
         { withCredentials: true }
       );
@@ -57,7 +58,7 @@ const useAuthStore = create((set) => ({
     set({ loading: true });
     try {
       const response = await axios.get(
-        "https://expense-tracker-api-rmjc.onrender.com/api/auth/profile",
+        `${API_URL}/auth/profile`,
         { withCredentials: true }
       );
       set({
@@ -83,7 +84,7 @@ const useAuthStore = create((set) => ({
   logout: async () => {
     try {
       await axios.post(
-        "https://expense-tracker-api-rmjc.onrender.com/api/auth/logout",
+        `${API_URL}/auth/logout`,
         {},
         { withCredentials: true }
       );

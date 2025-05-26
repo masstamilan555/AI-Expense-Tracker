@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios"
 import toast from "react-hot-toast";
+import { API_URL } from "../constants/consts";
 const RecordExpense = () => {
 
   const [amount, setAmount] = useState(0)
@@ -14,7 +15,7 @@ const RecordExpense = () => {
         setAmount(0)
         setDescription("")
         
-        await axios.post("https://expense-tracker-api-rmjc.onrender.com/api/expenses/create", { amount, category, description },
+        await axios.post(`${API_URL}/expenses/create`, { amount, category, description },
           { withCredentials: true })
           toast.success("transaction recorded successfully!!!")
       } catch (error) {

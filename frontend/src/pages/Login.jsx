@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import useAuthStore from "../store/authUser";
+import { API_URL } from "../constants/consts";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,9 +15,9 @@ const Login = () => {
     if (user) navigate("/dashboard");
   }, [user, navigate]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    login(email, password);
+    await login(email, password);
   };
 
   return (
@@ -66,7 +67,7 @@ const Login = () => {
         </div>
 
         <button
-          onClick={() => window.location.href = "https://expense-tracker-api-rmjc.onrender.com/api/auth/google"}
+          onClick={() => window.location.href = `${API_URL}/auth/google`}
           className="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition flex items-center justify-center gap-2"
         >
           <FaGoogle /> Continue with Google

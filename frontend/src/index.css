@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+  scroll-behavior: smooth;
+}
 @font-face {
     font-family: 'EmblemaOne';
     src: url('/fonts/EmblemaOne-Regular.ttf') format('truetype');

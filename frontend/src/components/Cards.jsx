@@ -40,7 +40,7 @@ export default function Cards() {
         </div>
 
         {stats.monthlyIncome ? (
-          <Link to="/dashboard/settings" className="group-hover:text-white">Update your income</Link>
+          <Link to="/dashboard/settings" className="group-hover:text-white">Wanna Update income?</Link>
         ) : (
           <button
             onClick={() => navigate("/dashboard/settings")}

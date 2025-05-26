@@ -2,13 +2,14 @@ import TransactionCard from "../components/TransactionCard";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import formatDateTime from "../utils/formatdate";
+import { API_URL } from "../constants/consts";
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true); 
   const getExpenses = async () => {
     try {
-      const res = await axios.get("https://expense-tracker-api-rmjc.onrender.com/api/expenses/all-expenses", {
+      const res = await axios.get(`${API_URL}/expenses/all-expenses`, {
         withCredentials: true,
       });
       setTransactions(res.data.data);
@@ -25,7 +26,7 @@ const Transactions = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://expense-tracker-api-rmjc.onrender.com/api/expenses/${id}`, {
+      await axios.delete(`${API_URL}/expenses/${id}`, {
         withCredentials: true,
       });
       setTransactions((prev) => prev.filter((item) => item._id !== id));

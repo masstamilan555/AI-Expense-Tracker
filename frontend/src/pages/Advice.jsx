@@ -4,6 +4,7 @@ import { FaRobot, FaLightbulb } from "react-icons/fa";
 import { IoReload } from "react-icons/io5";
 import { useUserContext } from "../context/UserContext";
 import toast from "react-hot-toast";
+import { API_URL } from "../constants/consts";
 
 const Advice = () => {
   const { stats, catexp } = useUserContext();
@@ -14,7 +15,7 @@ const Advice = () => {
     setLoading(true);
     try {
       toast("Please wait,While we analze your status")
-      const res = await axios.post("https://expense-tracker-api-rmjc.onrender.com/api/ai/advice", {
+      const res = await axios.post(`${API_URL}/ai/advice`, {
         stats: stats.data,
         catexp: catexp.data,
       }, { withCredentials: true });

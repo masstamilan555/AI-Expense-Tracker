@@ -11,7 +11,7 @@ import { UserProvider } from "../context/UserContext";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { HiMenuAlt3 } from "react-icons/hi";
-
+import { API_URL } from "../constants/consts";
 const Dashboard = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [catexp, setCatexp] = useState([]);
@@ -21,8 +21,8 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const [catRes, statRes] = await Promise.all([
-          axios.get("https://expense-tracker-api-rmjc.onrender.com/api/expenses/category-wise-expenses", { withCredentials: true }),
-          axios.get("https://expense-tracker-api-rmjc.onrender.com/api/expenses/monthly-expenses", { withCredentials: true })
+          axios.get(`${API_URL}/expenses/category-wise-expenses`, { withCredentials: true }),
+          axios.get(`${API_URL}/expenses/monthly-expenses`, { withCredentials: true })
         ]);
         
         setCatexp(catRes.data);

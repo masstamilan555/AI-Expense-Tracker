@@ -5,6 +5,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearSca
 import { Doughnut, Bar } from "react-chartjs-2";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { API_URL } from "../constants/consts";
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title);
 
@@ -45,7 +46,7 @@ export default function MainDashboard() {
   const getAdvice = async () => {
     toast("Fetching your AI advice…");
     try {
-      const res = await fetch("https://expense-tracker-api-rmjc.onrender.com/api/ai/advice", {
+      const res = await fetch(`${API_URL}/ai/advice`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
