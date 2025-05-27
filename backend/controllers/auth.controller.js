@@ -82,20 +82,43 @@ export const login = async (req, res) => {
 
 export const logout = (req, res) => {
     try {
-        req.logout(() => {
-            res.clearCookie("masstoken", {
-                httpOnly: true,
-                secure: process.env.NODE_ENV === "production",
-                sameSite: "strict",
-                path: "/",
+        req.logout(err => {
+            if (err) {
+                console.error("Logout error:", err);
+                return res.status(500).json({ message: "Logout failed" });
+            }
+
+            // Destroy session
+            req.session.destroy(sessionErr => {
+                if (sessionErr) {
+                    console.error("Session destroy error:", sessionErr);
+                    return res.status(500).json({ message: "Session cleanup failed" });
+                }
+
+                // Clear JWT and session cookies
+                res.clearCookie("masstoken", {
+                    httpOnly: true,
+                    secure: process.env.NODE_ENV === "production",
+                    sameSite: "strict",
+                    path: "/",
+                });
+
+                res.clearCookie("connect.sid", {
+                    httpOnly: true,
+                    secure: process.env.NODE_ENV === "production",
+                    sameSite: "strict",
+                    path: "/",
+                });
+
+                return res.status(200).json({ message: "Logged out successfully" });
             });
-            res.status(200).json({ message: "Logged out successfully" });
         });
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: "Logout failed" });
+        console.error("Unexpected logout error:", error);
+        res.status(500).json({ message: "Unexpected error during logout" });
     }
 };
+
 
 export const getUserProfile = async (req, res) => {
     try {
