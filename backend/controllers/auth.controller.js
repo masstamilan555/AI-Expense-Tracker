@@ -81,42 +81,40 @@ export const login = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-    try {
-        req.logout(err => {
-            if (err) {
-                console.error("Logout error:", err);
-                return res.status(500).json({ message: "Logout failed" });
-            }
+  try {
+    req.logout(err => {
+      if (err) {
+        console.error("Logout error:", err);
+        return res.status(500).json({ message: "Logout failed" });
+      }
 
-            // Destroy session
-            req.session.destroy(sessionErr => {
-                if (sessionErr) {
-                    console.error("Session destroy error:", sessionErr);
-                    return res.status(500).json({ message: "Session cleanup failed" });
-                }
+      req.session.destroy(sessionErr => {
+        if (sessionErr) {
+          console.error("Session destroy error:", sessionErr);
+          return res.status(500).json({ message: "Session cleanup failed" });
+        }
 
-                // Clear JWT and session cookies
-                res.clearCookie("masstoken", {
-                    httpOnly: true,
-                    secure: process.env.NODE_ENV === "production",
-                    sameSite: "strict",
-                    path: "/",
-                });
-
-                res.clearCookie("connect.sid", {
-                    httpOnly: true,
-                    secure: process.env.NODE_ENV === "production",
-                    sameSite: "strict",
-                    path: "/",
-                });
-
-                return res.status(200).json({ message: "Logged out successfully" });
-            });
+        res.clearCookie("masstoken", {
+          httpOnly: true,
+          secure: true,
+          sameSite: "none",
+          path: "/",
         });
-    } catch (error) {
-        console.error("Unexpected logout error:", error);
-        res.status(500).json({ message: "Unexpected error during logout" });
-    }
+
+        res.clearCookie("connect.sid", {
+          httpOnly: true,
+          secure: true,
+          sameSite: "none",
+          path: "/",
+        });
+
+        return res.status(200).json({ message: "Logged out successfully" });
+      });
+    });
+  } catch (error) {
+    console.error("Unexpected logout error:", error);
+    res.status(500).json({ message: "Unexpected error during logout" });
+  }
 };
 
 
