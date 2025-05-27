@@ -20,7 +20,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-    origin: "https://golden-cocada-356c82.netlify.app", 
+    origin: "https://ai-expensetracker.netlify.app", 
     credentials: true
   }));
   
